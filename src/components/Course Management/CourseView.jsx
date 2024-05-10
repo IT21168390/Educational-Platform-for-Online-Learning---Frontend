@@ -230,6 +230,7 @@ function CourseView() {
     updatedQuizzes.splice(quizIndex, 1);
     //setCourse({ ...course, quizzes: updatedQuizzes });
     setCourseData({ ...courseData, course_content: { ...courseData.course_content, quizzes: updatedQuizzes } });
+    console.log(updatedQuizzes);
   };
 
   const handleOptionChange = (index, optionIndex, event) => {
@@ -745,7 +746,7 @@ function CourseView() {
                       name="weight"
                       style={{ textAlign: 'center' }}
                       value={quiz.weight}
-                      onChange={(e) => handleQuizChange(e.target, index)}
+                      onChange={(e) => handleQuizChange(e, index)}
                     />
                   </div>
                 </div>
@@ -757,8 +758,8 @@ function CourseView() {
           <button className="btn btn-secondary float-right" disabled={!courseData.course_content || courseData.course_content.quizzes.length >= 10} onClick={addQuiz}>
             Add Quiz
           </button> */}
-          <div className="d-flex justify-content-between mt-3 p-2">
-            <label></label>
+            <div className="d-flex justify-content-between mt-3 p-2">
+              <label></label>
               <button type='submit' className="btn btn-warning float-right">
                 Submit All Quizzes
               </button>
@@ -774,10 +775,10 @@ function CourseView() {
 
           </form>
           <div className="d-flex justify-content-between mt-3 p-2">
-              <button className="btn btn-success float-left" disabled={!courseData.course_content || courseData.course_content.quizzes.length >= 10} onClick={addQuiz}>
-                Add Quiz
-              </button>
-            </div>
+            <button className="btn btn-success float-left" disabled={!courseData.course_content || courseData.course_content.quizzes.length >= 10} onClick={addQuiz}>
+              Add Quiz
+            </button>
+          </div>
         </div>
       </div>
     </div>
