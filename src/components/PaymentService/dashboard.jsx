@@ -17,7 +17,7 @@ const Dashboard = () => {
                     // Display error message to the user
                 });
         }
-    
+
         getData();
     }, []);
 
@@ -42,36 +42,77 @@ const Dashboard = () => {
     };
 
     return (
-        <TableContainer component={Paper} style={{ height: 400, width: '80%', align: 'center',  margin: 'auto', marginTop: "100px",  }}>
-            <Table aria-label="course table">
-                <TableHead>
-                    <TableRow>
-                        <TableCell>Course Name</TableCell>
-                        <TableCell>Lecture Note Weight</TableCell>
-                        <TableCell>Video Weight</TableCell>
-                        <TableCell>Price</TableCell>
-                        <TableCell>Status</TableCell>
-                        <TableCell>Actions</TableCell> {/* New column for actions */}
-                    </TableRow>
-                </TableHead>
-                <TableBody>
-                    {data.map((course) => (
-                        <TableRow key={course._id}>
-                            <TableCell>{course.name}</TableCell>
-                            <TableCell>{course.course_content.lecture_note.weight}</TableCell>
-                            <TableCell>{course.course_content.video.weight}</TableCell>
-                            <TableCell>${course.price}</TableCell>
-                            <TableCell>{course.status}</TableCell>
-                            <TableCell>
-                                {course.status === 'PENDING' && ( // Render button only if status is PENDING
-                                    <Button onClick={() => handleAcceptCourse(course._id)}>Accept</Button>
-                                )}
-                            </TableCell>
+        <>
+        <h1>Course Approval</h1>
+            <TableContainer component={Paper} style={{ height: 400, width: '80%', align: 'center', margin: 'auto', marginTop: "100px", }}>
+                <Table aria-label="course table">
+                    <TableHead>
+                        <TableRow>
+                            <TableCell>Course Name</TableCell>
+                            <TableCell>Lecture Note Weight</TableCell>
+                            <TableCell>Video Weight</TableCell>
+                            <TableCell>Price</TableCell>
+                            <TableCell>Status</TableCell>
+                            <TableCell>Actions</TableCell> {/* New column for actions */}
                         </TableRow>
-                    ))}
-                </TableBody>
-            </Table>
-        </TableContainer>
+                    </TableHead>
+                    <TableBody>
+                        {data.filter(
+                            (coursem) => coursem.status === "PENDING").map((course) => (
+                                <TableRow key={course._id}>
+                                    <TableCell>{course.name}</TableCell>
+                                    <TableCell>{course.course_content.lecture_note.weight}</TableCell>
+                                    <TableCell>{course.course_content.video.weight}</TableCell>
+                                    <TableCell>${course.price}</TableCell>
+                                    <TableCell>{course.status}</TableCell>
+                                    <TableCell>
+                                        {course.status === 'PENDING' && ( // Render button only if status is PENDING
+                                            <Button onClick={() => handleAcceptCourse(course._id)}>View</Button>
+                                        )}
+                                    </TableCell>
+                                    <TableCell>
+                                        {course.status === 'PENDING' && ( // Render button only if status is PENDING
+                                            <Button onClick={() => handleAcceptCourse(course._id)}>Accept</Button>
+                                        )}
+                                    </TableCell>
+                                </TableRow>
+                            ))}
+                    </TableBody>
+                </Table>
+            </TableContainer>
+
+            <TableContainer component={Paper} style={{ height: 400, width: '80%', align: 'center', margin: 'auto', marginTop: "100px", }}>
+                <Table aria-label="course table">
+                    <TableHead>
+                        <TableRow>
+                            <TableCell>Course Name</TableCell>
+                            <TableCell>Lecture Note Weight</TableCell>
+                            <TableCell>Video Weight</TableCell>
+                            <TableCell>Price</TableCell>
+                            <TableCell>Status</TableCell>
+                            <TableCell>Actions</TableCell> {/* New column for actions */}
+                        </TableRow>
+                    </TableHead>
+                    <TableBody>
+                        {data.filter(
+                            (coursem) => coursem.status === "APPROVED").map((course) => (
+                                <TableRow key={course._id}>
+                                    <TableCell>{course.name}</TableCell>
+                                    <TableCell>{course.course_content.lecture_note.weight}</TableCell>
+                                    <TableCell>{course.course_content.video.weight}</TableCell>
+                                    <TableCell>${course.price}</TableCell>
+                                    <TableCell>{course.status}</TableCell>
+                                    <TableCell>
+                                        {course.status === 'APPROVED' && ( // Render button only if status is PENDING
+                                            <Button onClick={() => handleAcceptCourse(course._id)}>View</Button>
+                                        )}
+                                    </TableCell>
+                                </TableRow>
+                            ))}
+                    </TableBody>
+                </Table>
+            </TableContainer>
+        </>
     );
 };
 

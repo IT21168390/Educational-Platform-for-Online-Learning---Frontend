@@ -8,6 +8,7 @@ import Home from './components/PaymentService/routes/Home'
 import HostedCheckout from './components/PaymentService/routes/HostedCheckout'
 import Success from './components/PaymentService/routes/Success'
 import Failure from './components/PaymentService/routes/Failure'
+import Dashboard from './components/PaymentService/dashboard';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Courses />} />
         <Route path='/course' element={<CourseView />} />
+        <Route path='/dashboard' element={<Dashboard />} />
 
         <Route path='/h' element={<Home />} />
         <Route path='/hosted-checkout' element={<HostedCheckout />} />
