@@ -1,0 +1,27 @@
+.main-nav-link {
+    font-weight: 400;
+}
+
+.main-nav-link:hover {
+    color: #5d00ff;
+}
+
+.main-nav-link:focus {
+    color: #5d00ff;
+}
+
+.main-nav-link:active {
+    color: #5d00ff;
+
+}
+
+.active{
+    color: rgb(255, 255, 255);
+    /* background-color: aqua; */
+    border-bottom: 2px solid #5d00ff;
+}
+
+/* .nav-title  {
+    border: 2px solid #5d00ff;
+    border-radius: 30px;
+} */
