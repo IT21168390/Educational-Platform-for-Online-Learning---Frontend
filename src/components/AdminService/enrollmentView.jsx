@@ -9,7 +9,7 @@ const enrollmentView = () => {
 
     useEffect(() => {
         function getData() {
-            axios.get("http://localhost:8081/api/v1/courses/public/all")
+            axios.post("http://localhost:8081/api/LearnerService/getUserEnrolledCourses")
                 .then((res) => {
                     setData(res.data);
                     setFilteredData(res.data); // Initialize filtered data with all courses
