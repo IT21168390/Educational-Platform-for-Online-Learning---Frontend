@@ -19,8 +19,8 @@ function App() {
       <Routes>
         <Route path='/' element={<Courses />} />
         <Route path='/course' element={<CourseView />} />
-        <Route path='/approvalDashboard' element={<ApprovalDashboard />} />
 
+        <Route path='/approvalDashboard' element={<ApprovalDashboard />} />
         <Route path='/viewCourses' element={<ViewCourses />} />
         <Route path='/hosted-checkout' element={<HostedCheckout />} />
         <Route path='/success' element={<Success />} />
