@@ -6,6 +6,10 @@ import { useParams } from "react-router-dom";
 
 function ViewCoursePage() {
     const { id } = useParams();
+    if (id) {
+        localStorage.setItem("coursId", id);
+        localStorage.setItem("userId", '2');
+    }
     const [course, setCourse] = useState([]);
 
     const [cardNumber, setCardNumber] = useState('');
@@ -14,7 +18,7 @@ function ViewCoursePage() {
 
     const btnClose = useRef(null);
 
-    
+
 
     useEffect(() => {
         //To Do : Make an api call to Course Management Service to get the course by ID
@@ -25,13 +29,13 @@ function ViewCoursePage() {
         ///////////////////////////////////////////
     }, []);
 
-    async function getCourseById(){
+    async function getCourseById() {
         try {
-            await axios.get(`http://localhost:8081/api/v1/courses/public/${id}`).then(res=>{
-                if(res.status===200){
+            await axios.get(`http://localhost:8081/api/v1/courses/public/${id}`).then(res => {
+                if (res.status === 200) {
                     setCourse(res.data)
-                }   
-            }).catch(err=>{
+                }
+            }).catch(err => {
                 console.log(err)
             });
 
@@ -106,7 +110,7 @@ function ViewCoursePage() {
                             </form>
                         </div>
                         <div class="modal-footer">
-                            <button type="button"  class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                             <button type="button" class="btn btn-primary" onClick={handlePayment}>Make Payment</button>
                         </div>
                     </div>
