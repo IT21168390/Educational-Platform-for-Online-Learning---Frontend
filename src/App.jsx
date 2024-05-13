@@ -13,6 +13,9 @@ import EnrollmentView from './components/AdminService/enrollmentView';
 
 import FeedbackForm from './components/Notifications/Feedback';
 
+import HomePage from './components/Learner Service/pages/HomePage';
+import ViewUserEnrolledCoursesPage from './components/Learner Service/pages/ViewUserEnrolledCoursesPage';
+
 function App() {
   return (
     <BrowserRouter>
@@ -28,6 +31,12 @@ function App() {
         <Route path='/enrolled' element={<EnrollmentView />} />
 
         <Route path='/feedback' element={<FeedbackForm />} />
+
+
+        <Route path='/learnerHome' element={<HomePage />} />
+        <Route path='/viewMyCourses' element={<ViewUserEnrolledCoursesPage />} />
+        {/* <Route path='/viewCourse/:id' element={<ViewCoursePage />} />
+        <Route path='/viewCourseContent/:id' element={<ViewCourseContentPage />} /> */}
       </Routes>
     </BrowserRouter>
   )
