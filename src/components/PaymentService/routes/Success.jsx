@@ -42,7 +42,8 @@ function Success() {
             <VStack spacing={3}>
                 <Heading fontSize="4xl">Payment Success!</Heading>
                 {/* <Text color="black">{queryParams.toString().split("&").join("\n")}</Text> */}
-                <Button onClick={onButtonClick} colorScheme="green">Go to My Courses</Button>
+                <Button onClick={onButtonClick} colorScheme="green" style={{ backgroundColor: 'blue', color: 'white', borderRadius: '5px', padding: '10px 20px', fontWeight: 'bold', border: 'none' }}>Go Back to My Courses</Button>
+
             </VStack>
         </Center>
     );
