@@ -72,7 +72,7 @@ const Dashboard = () => {
                                     </TableCell>
                                     <TableCell>
                                         {course.status === 'PENDING' && ( // Render button only if status is PENDING
-                                            <Button onClick={() => handleAcceptCourse(course._id)}>Accept</Button>
+                                            <Button onClick={() => handleAcceptCourse(course.id)}>Accept</Button>
                                         )}
                                     </TableCell>
                                 </TableRow>
