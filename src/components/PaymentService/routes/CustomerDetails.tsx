@@ -22,7 +22,7 @@ function CustomerDetails(props: CustomerDetailsProps) {
     const onCustomerEmailChange = (ev: React.ChangeEvent<HTMLInputElement>) => {
         setEmail(ev.target.value);
     };
-    const key = "http://localhost:8090";
+    const key = "http://localhost:8092";
 
     const initiatePayment = () => {
         fetch(`${key}${props.endpoint}`, {
