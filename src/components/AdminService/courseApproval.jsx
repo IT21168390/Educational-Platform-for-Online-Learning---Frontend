@@ -8,7 +8,7 @@ const Dashboard = () => {
 
     useEffect(() => {
         function getData() {
-            axios.get("http://localhost:8060/admin/")
+            axios.get("http://localhost:8081/api/v1/courses/public/all")
                 .then((res) => {
                     setData(res.data);
                 })
@@ -22,9 +22,9 @@ const Dashboard = () => {
     }, []);
 
     const handleAcceptCourse = (courseId) => {
-        const url = `http://localhost:8060/admin/courses/${courseId}/status`;
+        const url = `http://localhost:8081/admin/courses/${courseId}/status`;
         const requestBody = {
-            courseName: "Updated Course Name3",
+            // courseName: courseId,
             status: "APPROVED" // Assuming ACCEPTED is the new status
         };
 

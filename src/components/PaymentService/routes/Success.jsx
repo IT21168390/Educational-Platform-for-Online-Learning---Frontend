@@ -13,7 +13,7 @@ function Success() {
     return (
         <Center h="100vh" color="green">
             <VStack spacing={3}>
-                <Heading fontSize="4xl">Success!</Heading>
+                <Heading fontSize="4xl">Payment Success!</Heading>
                 {/* <Text color="black">{queryParams.toString().split("&").join("\n")}</Text> */}
                 <Button onClick={onButtonClick} colorScheme="green">Go Home</Button>
             </VStack>

@@ -13,15 +13,15 @@ function CartItem(props: CartItemProps) {
                 <CardBody>
                     <VStack spacing={'3'} alignItems="flex-start">
                         <Heading size='md'>Course</Heading>
-                        <VStack spacing={'1'} alignItems="flex-start">
+                        <VStack spacing={'1'}>
                             <Text>Course description</Text>
-                            {props.mode === "checkout" && <Text>{"Quantity: " + props.data.quantity}</Text>}
+                            {/* {props.mode === "checkout" && <Text>{"Quantity: " + props.data.quantity}</Text>} */}
                         </VStack>
                     </VStack>
                 </CardBody>
                 <CardFooter>
-                    <VStack alignItems="flex-start">
-                        <Text color='blue.600' fontSize='2xl'>{"$" + props.data.price}</Text>
+                    <VStack >
+                        <Text color='blue.600' fontSize='2xl'>Amount : {"$" + props.data.price}</Text>
                     </VStack>
                 </CardFooter>
             </Stack>
