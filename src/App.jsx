@@ -15,6 +15,11 @@ import FeedbackForm from './components/Notifications/Feedback';
 
 import HomePage from './components/Learner Service/pages/HomePage';
 import ViewUserEnrolledCoursesPage from './components/Learner Service/pages/ViewUserEnrolledCoursesPage';
+import ViewCoursePage from './components/Learner Service/pages/ViewCoursePage';
+import ViewCourseContentPage from './components/Learner Service/pages/ViewCourseContentPage';
+import SignUp from './components/AuthService/SignUp';
+import SignIn from './components/AuthService/SignIn';
+
 
 function App() {
   return (
@@ -35,8 +40,11 @@ function App() {
 
         <Route path='/learnerHome' element={<HomePage />} />
         <Route path='/viewMyCourses' element={<ViewUserEnrolledCoursesPage />} />
-        {/* <Route path='/viewCourse/:id' element={<ViewCoursePage />} />
-        <Route path='/viewCourseContent/:id' element={<ViewCourseContentPage />} /> */}
+        <Route path='/viewCourse/:id' element={<ViewCoursePage />} />
+        <Route path='/viewCourseContent/:id' element={<ViewCourseContentPage />} />
+
+        <Route path='/SignUp' element={<SignUp />} />
+        <Route path='/SignIn' element={<SignIn />} />
       </Routes>
     </BrowserRouter>
   )
