@@ -28,7 +28,11 @@ function CourseView() {
   const [lectureFile, setLectureFile] = useState();
 
   async function fetchAllCoursesData() {
-    const coursesData = await axios.get(`http://localhost:8081/api/v1/courses/public/${courseId}`);
+    const coursesData = await axios.get(`http://localhost:8081/api/v1/courses/public/${courseId}`, {
+      headers: {
+        Authorization: `Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJlbWFpbEBlbWFpbC5jb20iLCJpYXQiOjE3MTU1ODY0OTgsImV4cCI6MTcxNTY3Mjg5OH0.xJz-oIVPUoACEE1y4xAIQU02cWmJv18ppIJhzTrSGBY`
+      }
+    });
     if (coursesData.status === 200) {
       setCourseData(coursesData.data);
       console.log("Retrieved all Courses: ", coursesData.data);
@@ -171,6 +175,16 @@ function CourseView() {
     console.log("Submitted all quizzes:", courseData.course_content.quizzes);
   };
 
+  const [showChartPopup, setShowChartPopup] = useState(false);
+
+  const handleChartButtonClick = () => {
+    setShowChartPopup(true);
+  };
+
+  const handleCloseChartPopup = () => {
+    setShowChartPopup(false);
+  };
+
   return (
     <div className="container">
       <div className="container shadow p-3 mb-5 bg-white rounded">
@@ -229,11 +243,36 @@ function CourseView() {
       </div>
 
       <hr />
-      <center>
+      {/* <center>
         <h4><u>Average Learner Progresses</u></h4>
         <label>Average Completion % of Course Contents</label>
         <ChartWithCombinationsRecharts learnerProgresses={learner_progresses} />
+      </center> */}
+
+
+      <center>
+        {!showChartPopup && <button className="btn btn-success mt-3" style={{fontWeight: 'bold'}} onClick={handleChartButtonClick}>
+          Show Learner Progress Chart
+        </button>}
       </center>
+
+      {showChartPopup && (
+        <div className="container shadow p-4 mb-4 mt-3">
+          <div className="chart-popup">
+            <center>
+              <div className="chart-popup-content">
+                <button className="btn close-btn btn-danger mt-1" onClick={handleCloseChartPopup}>
+                  Close
+                </button>
+                <h4><u>Average Learner Progresses</u></h4>
+                <label>Average Completion % of Course Contents</label>
+                <ChartWithCombinationsRecharts learnerProgresses={learner_progresses} />
+              </div>
+            </center>
+          </div>
+        </div>
+      )}
+
 
       <div className="container shadow p-4 mb-4 mt-3">
         <h3>Lecture Notes</h3>

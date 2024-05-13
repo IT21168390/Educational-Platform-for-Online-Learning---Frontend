@@ -8,7 +8,11 @@ const Dashboard = () => {
 
     useEffect(() => {
         function getData() {
-            axios.get("http://localhost:8081/api/v1/courses/public/all")
+            axios.get("http://localhost:8081/api/v1/courses/public/all", {
+                headers: {
+                    Authorization: `Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJlbWFpbEBlbWFpbC5jb20iLCJpYXQiOjE3MTU1ODY0OTgsImV4cCI6MTcxNTY3Mjg5OH0.xJz-oIVPUoACEE1y4xAIQU02cWmJv18ppIJhzTrSGBY`
+                }
+            })
                 .then((res) => {
                     setData(res.data);
                 })

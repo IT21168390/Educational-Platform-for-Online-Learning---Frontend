@@ -12,7 +12,11 @@ export const Courses = () => {
   });
 
   async function fetchAllCoursesData() {
-    const allCoursesData = await axios.get("http://localhost:8081/api/v1/courses/public/all");
+    const allCoursesData = await axios.get("http://localhost:8081/api/v1/courses/public/all", {
+      headers: {
+        Authorization: `Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJlbWFpbEBlbWFpbC5jb20iLCJpYXQiOjE3MTU1ODY0OTgsImV4cCI6MTcxNTY3Mjg5OH0.xJz-oIVPUoACEE1y4xAIQU02cWmJv18ppIJhzTrSGBY`
+      }
+    });
     if (allCoursesData.status === 200) {
       setCourses(allCoursesData.data);
       console.log("Retrieved all Courses: ", allCoursesData.data);
@@ -71,6 +75,22 @@ export const Courses = () => {
     fetchAllCoursesData();
   }
 
+
+  const [activeTab, setActiveTab] = useState('All');
+
+  const filteredCourses = courses.filter(course => {
+    if (activeTab === 'All') {
+      return true;
+    } else {
+      return course.status === activeTab.toUpperCase();
+    }
+  });
+
+  const handleTabClick = (status) => {
+    setActiveTab(status);
+  };
+
+
   return (
     <div>
       <form className="row g-3 shadow p-3 mt-3" onSubmit={handleCourseSubmit} style={{ marginBottom: '50px' }}>
@@ -123,6 +143,48 @@ export const Courses = () => {
           </div>
         ))}
       </div>
+      {/* <div className='mt-4'>
+        <h3 className='mb-3'>COURSES</h3>
+        <ul className="nav nav-tabs mb-3" style={{ marginLeft: '50px', marginRight: '50px'}}>
+          <li className="nav-item">
+            <button className={`nav-link ${activeTab === 'All' ? 'active fw-semibold' : ''}`} onClick={() => handleTabClick('All')}>All</button>
+          </li>
+          <li className="nav-item">
+            <button className={`nav-link ${activeTab === 'pending' ? 'active fw-semibold' : ''}`} onClick={() => handleTabClick('pending')}>Pending</button>
+          </li>
+          <li className="nav-item">
+            <button className={`nav-link ${activeTab === 'draft' ? 'active fw-semibold' : ''}`} onClick={() => handleTabClick('draft')}>Draft</button>
+          </li>
+          <li className="nav-item">
+            <button className={`nav-link ${activeTab === 'declined' ? 'active fw-semibold' : ''}`} onClick={() => handleTabClick('declined')}>Declined</button>
+          </li>
+          <li className="nav-item">
+            <button className={`nav-link ${activeTab === 'approved' ? 'active fw-semibold' : ''}`} onClick={() => handleTabClick('approved')}>Approved</button>
+          </li>
+        </ul>
+        {filteredCourses.map(course => (
+          <div className="card shadow" key={course.id} style={{ marginLeft: '50px', marginRight: '50px', marginBottom: '17px', position: 'relative' }}>
+            <div className="row g-0">
+              <div className="col-md-3">
+                <img src={course.thumbnail} className="card-img img-fluid rounded-start" alt={course.id} style={{ height: '200px', objectFit: 'contain', objectPosition: 'left' }} />
+              </div>
+              <div className="col-md-9">
+                <div className="card-body">
+                  <h5 className="card-title" style={{ textAlign: 'left' }}>{course.name}</h5>
+                  <p className="card-text" style={{ textAlign: 'left' }}>{course.description}</p>
+                </div>
+                <div className="position-absolute top-0 end-0 p-2">
+                  <a href={`/course?id=${course.id}`} className="btn btn-primary" style={{ width: '87px', marginTop: '10px', marginRight: '10px' }}>OPEN</a>
+                </div>
+                <div className="position-absolute bottom-0 end-0 p-2">
+                  <span className={course.status === 'PENDING' ? `badge bg-warning` : course.status === 'DRAFT' ? 'badge bg-dark' : course.status === 'DECLINED' ? 'badge bg-danger' : course.status === 'APPROVED' ? 'badge bg-success' : 'badge bg-primary'} style={{ fontSize: '15px', paddingInline: '15px', paddingTop: '5px', paddingBottom: '5px', marginRight: '575px' }}>{course.status}</span>
+                  <button onClick={() => handleCourseRemove(course.id)} className="btn btn-danger" style={{ marginBottom: '10px', marginRight: '10px' }}>REMOVE</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div> */}
     </div>
   )
 }
