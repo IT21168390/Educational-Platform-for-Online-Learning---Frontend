@@ -118,7 +118,7 @@ export const Courses = () => {
 
       <hr />
 
-      {/* <div className='mt-4'>
+      <div className='mt-4'>
         <h3 className='mb-3'>COURSES</h3>
         {courses.map(course => (
           <div className="card shadow" key={course.id} style={{ marginLeft: '50px', marginRight: '50px', marginBottom: '17px', position: 'relative' }}>
@@ -142,8 +142,8 @@ export const Courses = () => {
             </div>
           </div>
         ))}
-      </div> */}
-      <div className='mt-4'>
+      </div>
+      {/* <div className='mt-4'>
         <h3 className='mb-3'>COURSES</h3>
         <ul className="nav nav-tabs mb-3" style={{ marginLeft: '50px', marginRight: '50px'}}>
           <li className="nav-item">
@@ -184,7 +184,7 @@ export const Courses = () => {
             </div>
           </div>
         ))}
-      </div>
+      </div> */}
     </div>
   )
 }
