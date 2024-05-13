@@ -55,7 +55,8 @@ export const Courses = () => {
     axios.post("http://localhost:8081/api/v1/courses/instructor/add-course", courseFormData,
       {
         headers: {
-          'Content-Type': 'multipart/form-data'
+          'Content-Type': 'multipart/form-data',
+          Authorization: `Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJlbWFpbEBlbWFpbC5jb20iLCJpYXQiOjE3MTU1ODY0OTgsImV4cCI6MTcxNTY3Mjg5OH0.xJz-oIVPUoACEE1y4xAIQU02cWmJv18ppIJhzTrSGBY`
         }
       })
       .then(response => {
