@@ -9,7 +9,7 @@ function Success() {
     const navigate = useNavigate();
 
     const onButtonClick = () => {
-        navigate("/");
+        navigate("/viewMyCourses");
     };
 
     // useEffect(() => {
@@ -42,7 +42,7 @@ function Success() {
             <VStack spacing={3}>
                 <Heading fontSize="4xl">Payment Success!</Heading>
                 {/* <Text color="black">{queryParams.toString().split("&").join("\n")}</Text> */}
-                <Button onClick={onButtonClick} colorScheme="green">Go Home</Button>
+                <Button onClick={onButtonClick} colorScheme="green">Go to My Courses</Button>
             </VStack>
         </Center>
     );
